@@ -19,6 +19,22 @@ public class Administrateur extends Personne {
 	
 	@Column(name="pass_admin")
 	private String passAdmin;
+
+	public String getLoginAdmin() {
+		return loginAdmin;
+	}
+
+	public void setLoginAdmin(String loginAdmin) {
+		this.loginAdmin = loginAdmin;
+	}
+
+	public String getPassAdmin() {
+		return passAdmin;
+	}
+
+	public void setPassAdmin(String passAdmin) {
+		this.passAdmin = passAdmin;
+	}
 	
 	
 	
