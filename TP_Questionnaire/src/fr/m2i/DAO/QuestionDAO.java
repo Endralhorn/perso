@@ -1,4 +1,3 @@
-
 package fr.m2i.DAO;
 
 import java.util.List;
@@ -9,19 +8,19 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.m2i.model.Test;
+import fr.m2i.model.Question;
 
 @Repository
 @Transactional
-public class TestDAO implements IDAO<Test, Integer> {
-	
+public class QuestionDAO implements IDAO<Question, Integer>{
+
 	@PersistenceContext
 	EntityManager entityManager;
-
+	
 	@Override
-	public List<Test> findAll() {
+	public List<Question> findAll() {
 		try {
-			return this.entityManager.createQuery("from Test", Test.class).getResultList();
+			return this.entityManager.createQuery("from Question", Question.class).getResultList();
 		}
 
 		catch (Exception e) {
@@ -32,9 +31,9 @@ public class TestDAO implements IDAO<Test, Integer> {
 	}
 
 	@Override
-	public Test find(Integer id) {
+	public Question find(Integer id) {
 		try {
-			return this.entityManager.find(Test.class, id);
+			return this.entityManager.find(Question.class, id);
 		}
 
 		catch (Exception e) {
@@ -45,22 +44,22 @@ public class TestDAO implements IDAO<Test, Integer> {
 	}
 
 	@Override
-	public Test save(Test test) {
+	public Question save(Question question) {
 		try {
-			return this.entityManager.merge(test);
+			return this.entityManager.merge(question);
 		}
 
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return test;
+		return question;
 	}
 
 	@Override
-	public void delete(Test test) {
+	public void delete(Question question) {
 		try {
-			this.entityManager.remove(this.entityManager.merge(test));
+			this.entityManager.remove(this.entityManager.merge(question));
 		}
 
 		catch (Exception e) {
@@ -68,9 +67,5 @@ public class TestDAO implements IDAO<Test, Integer> {
 		}
 		
 	}
-	
-	
-	
-	
 
 }
