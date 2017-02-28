@@ -4,9 +4,6 @@ import fr.m2i.model.Administrateur;
 
 public class InscriptionUtilisateur extends Administrateur {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private String type;

@@ -13,4 +13,5 @@ public interface IAdministrateurDAO extends IDAO<Administrateur, Integer>
 	public void delete(Administrateur obj);
 	
 	public Administrateur auth(String username, String password) throws WrongUsernameOrPasswordException;
+	
 }

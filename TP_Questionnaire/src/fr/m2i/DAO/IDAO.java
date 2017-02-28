@@ -10,4 +10,5 @@ public interface IDAO<T, I>
 	public T find(I id);
 	public T save(T obj);
 	public void delete(T obj);
+	
 }

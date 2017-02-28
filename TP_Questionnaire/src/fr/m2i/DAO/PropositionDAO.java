@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.m2i.model.Proposition;
 
+
 @Repository
 @Transactional
 public class PropositionDAO implements IDAO<Proposition, Integer>{

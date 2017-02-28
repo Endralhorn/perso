@@ -11,6 +11,7 @@ import fr.m2i.model.Candidat;
 @Transactional
 public class CandidatDAO implements ICandidatDAO{
 
+	
 	@Override
 	public List<Candidat> findAll() {
 		// TODO Auto-generated method stub

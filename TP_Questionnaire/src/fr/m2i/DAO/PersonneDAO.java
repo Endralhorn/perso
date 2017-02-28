@@ -14,6 +14,7 @@ import fr.m2i.model.Personne;
 @Transactional
 public class PersonneDAO implements IDAO<Personne, Integer>{
 
+	
 	@PersistenceContext
 	EntityManager entityManager;
 	

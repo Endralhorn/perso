@@ -10,5 +10,6 @@ public interface ICletestDAO extends IDAO<Cletest, String>{
 	public Cletest find(String id);
 	public Cletest save(Cletest obj);
 	public void delete(Cletest obj);
+	
 
 }

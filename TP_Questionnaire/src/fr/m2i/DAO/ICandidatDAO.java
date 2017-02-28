@@ -12,5 +12,6 @@ public interface ICandidatDAO extends IDAO<Candidat, Integer> {
 	public void delete(Candidat obj);
 	
 	public Candidat auth(String username, String password);
+	
 
 }

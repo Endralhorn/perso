@@ -15,6 +15,7 @@ import fr.m2i.validation.WrongUsernameOrPasswordException;
 @Transactional
 public class AdministrateurDAO implements IAdministrateurDAO{
 
+	
 	@PersistenceContext
 	EntityManager entityManager;
 	
