@@ -19,5 +19,8 @@ public class Administrateur extends Personne {
 	
 	@Column(name="pass_admin")
 	private String passAdmin;
+	
+	
+	
 
 }
