@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,7 +27,9 @@ public class Questionnaire {
 	
 	@OneToMany(mappedBy="quest", fetch=FetchType.EAGER)
 	private List<Question> questions;
-		
+	
+	@ManyToMany(mappedBy="questionnaires")
+	List<Test> tests;
 
 	public int getIdQuestionnaire() {
 		return idQuestionnaire;

@@ -8,16 +8,13 @@ import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "cletest")
@@ -39,10 +36,10 @@ public class Cletest implements Serializable {
 	
 	@ManyToMany(fetch=FetchType.EAGER)//(cascade=CascadeType.MERGE)
 	@JoinTable(
-		name="reponse_candidat",
-		uniqueConstraints = @UniqueConstraint( columnNames = { "id_proposition_RC", "id_candidat_RC" } ),
-		joinColumns=@JoinColumn(name="id_proposition_RC", referencedColumnName="id_proposition"),
-	    inverseJoinColumns=@JoinColumn(name="id_candidat_RC", referencedColumnName="id_personne")
+		name="reponse_test",
+		uniqueConstraints = @UniqueConstraint( columnNames = { "id_proposition_RT", "cle_unique" } ),
+		joinColumns=@JoinColumn(name="cle_unique_RT", referencedColumnName="cle_unique"),
+	    inverseJoinColumns=@JoinColumn(name="id_proposition_RT", referencedColumnName="id_proposition")
 	)
 	private List<Proposition> propositions;
 	
