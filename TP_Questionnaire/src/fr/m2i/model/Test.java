@@ -32,6 +32,8 @@ public class Test implements Serializable {
 	@Column(name="nom_test")
 	private String nomTest;
 	
+	
+	
 	@ManyToMany(fetch=FetchType.EAGER)//(cascade=CascadeType.MERGE)
 	@JoinTable(
 		name="TestQCM",
