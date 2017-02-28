@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,7 +26,8 @@ public class Question {
 	@Column(name="texte_question")
 	private String texteQuestion;
 	
-	@Column(name="id_reponse_correct")
+	@OneToOne
+	@JoinColumn(name="id_reponse_correct")
 	private Proposition bonneReponse;
 	
 	@ManyToOne
