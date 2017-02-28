@@ -11,5 +11,6 @@ public interface ICletestDAO extends IDAO<Cletest, String>{
 	public Cletest save(Cletest obj);
 	public void delete(Cletest obj);
 	
+	public Cletest auth(String username, String password);
 
 }
