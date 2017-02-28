@@ -22,5 +22,15 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Administrateur/.m2/repository/org/hibernate/hibernate-core/5.2.4.Final/hibernate-core-5.2.4.Final.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.hibernate"/>
+			<attribute name="maven.artifactId" value="hibernate-core"/>
+			<attribute name="maven.version" value="5.2.4.Final"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Administrateur/workspace/tp-jpa-old/WebContent/WEB-INF/lib/hibernate-core-5.2.4.Final.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
