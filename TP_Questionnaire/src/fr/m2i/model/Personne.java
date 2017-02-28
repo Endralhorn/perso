@@ -70,7 +70,7 @@ public class Personne implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column (name="id_test")
+	@Column (name="id_personne")
 	private int id;
 	
 	@Column (name="nom_personne")
