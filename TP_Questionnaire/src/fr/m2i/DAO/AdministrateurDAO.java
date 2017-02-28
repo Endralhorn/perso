@@ -71,12 +71,12 @@ public class AdministrateurDAO implements IAdministrateurDAO{
 	}
 
 	@Override
-	public Administrateur auth(String username, String password) throws WrongUsernameOrPasswordException {
+	public Administrateur auth(String loginAdmin, String passAdmin) throws WrongUsernameOrPasswordException {
 		Administrateur myAdmin = null;
 		try {
-			myAdmin =  entityManager.createQuery("FROM Utilisateur WHERE username = :user AND password = :pass " /*"SELECT u FROM Utilisateur u WHERE u.username = :user AND u.password = :pass"*/, Administrateur.class)
-					.setParameter("user", username)
-					.setParameter("pass", password)
+			myAdmin =  entityManager.createQuery("FROM Personne WHERE loginAdmin = :user AND passAdmin = :pass " /*"SELECT u FROM Utilisateur u WHERE u.username = :user AND u.password = :pass"*/, Administrateur.class)
+					.setParameter("user", loginAdmin)
+					.setParameter("pass", passAdmin)
 					.getSingleResult();
 			
 		}
