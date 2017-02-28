@@ -15,7 +15,6 @@ import fr.m2i.model.Test;
 @Transactional
 public class TestDAO implements IDAO<Test, Integer> {
 	
-	
 	@PersistenceContext
 	EntityManager entityManager;
 

@@ -14,7 +14,6 @@ import fr.m2i.model.Question;
 @Transactional
 public class QuestionDAO implements IDAO<Question, Integer>{
 
-	
 	@PersistenceContext
 	EntityManager entityManager;
 	
