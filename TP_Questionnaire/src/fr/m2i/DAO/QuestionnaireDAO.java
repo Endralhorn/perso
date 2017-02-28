@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.m2i.model.Question;
 import fr.m2i.model.Questionnaire;
 
 @Repository
@@ -21,7 +20,7 @@ public class QuestionnaireDAO implements IDAO<Questionnaire, Integer>{
 	@Override
 	public List<Questionnaire> findAll() {
 		try {
-			return this.entityManager.createQuery("from Question", Question.class).getResultList();
+			return this.entityManager.createQuery("from Questionnaire", Questionnaire.class).getResultList();
 		}
 
 		catch (Exception e) {
@@ -34,7 +33,7 @@ public class QuestionnaireDAO implements IDAO<Questionnaire, Integer>{
 	@Override
 	public Questionnaire find(Integer id) {
 		try {
-			return this.entityManager.find(Question.class, id);
+			return this.entityManager.find(Questionnaire.class, id);
 		}
 
 		catch (Exception e) {
@@ -45,22 +44,22 @@ public class QuestionnaireDAO implements IDAO<Questionnaire, Integer>{
 	}
 
 	@Override
-	public Questionnaire save(Questionnaire obj) {
+	public Questionnaire save(Questionnaire questionnaire) {
 		try {
-			return this.entityManager.merge(question);
+			return this.entityManager.merge(questionnaire);
 		}
 
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return question;
+		return questionnaire;
 	}
 
 	@Override
-	public void delete(Questionnaire obj) {
+	public void delete(Questionnaire questionnaire) {
 		try {
-			this.entityManager.remove(this.entityManager.merge(question));
+			this.entityManager.remove(this.entityManager.merge(questionnaire));
 		}
 
 		catch (Exception e) {

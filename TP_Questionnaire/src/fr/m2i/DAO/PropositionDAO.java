@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.m2i.model.Proposition;
-import fr.m2i.model.Question;
 
 @Repository
 @Transactional
@@ -21,7 +20,7 @@ public class PropositionDAO implements IDAO<Proposition, Integer>{
 	@Override
 	public List<Proposition> findAll() {
 		try {
-			return this.entityManager.createQuery("from Question", Question.class).getResultList();
+			return this.entityManager.createQuery("from Proposition", Proposition.class).getResultList();
 		}
 
 		catch (Exception e) {
@@ -34,7 +33,7 @@ public class PropositionDAO implements IDAO<Proposition, Integer>{
 	@Override
 	public Proposition find(Integer id) {
 		try {
-			return this.entityManager.find(Question.class, id);
+			return this.entityManager.find(Proposition.class, id);
 		}
 
 		catch (Exception e) {
@@ -45,22 +44,22 @@ public class PropositionDAO implements IDAO<Proposition, Integer>{
 	}
 
 	@Override
-	public Proposition save(Proposition obj) {
+	public Proposition save(Proposition proposition) {
 		try {
-			return this.entityManager.merge(question);
+			return this.entityManager.merge(proposition);
 		}
 
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return question;
+		return proposition;
 	}
 
 	@Override
-	public void delete(Proposition obj) {
+	public void delete(Proposition proposition) {
 		try {
-			this.entityManager.remove(this.entityManager.merge(question));
+			this.entityManager.remove(this.entityManager.merge(proposition));
 		}
 
 		catch (Exception e) {
