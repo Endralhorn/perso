@@ -21,35 +21,20 @@ public class Cletest implements Serializable {
 
 	@Id
 	@Column(name = "cle_unique")
-	
 	private String cleUnique;
 	
-	
-
-	
-	
-	
-
 	@Column(name = "id_test")
 	private int idTest;
 	
 	@Column(name = "id_candidat")
 	private String idCandidat;
 	
-	
-	
-	
-	
-
-
 	public String getCleUnique() {
 		return cleUnique;
 	}
 
 	public void setCleUnique(String cleUnique) {
-		this.cleUnique = cleUnique;
-		
-		
+		this.cleUnique = cleUnique;		
 	}
 
 	public int getIdTest() {

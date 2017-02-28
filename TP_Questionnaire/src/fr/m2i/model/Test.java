@@ -1,13 +1,19 @@
 package fr.m2i.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name="test")
@@ -25,6 +31,15 @@ public class Test implements Serializable {
 	
 	@Column(name="nom_test")
 	private String nomTest;
+	
+	@ManyToMany(fetch=FetchType.EAGER)//(cascade=CascadeType.MERGE)
+	@JoinTable(
+		name="TestQCM",
+		uniqueConstraints = @UniqueConstraint( columnNames = { "id_questionnqire_TQ", "id_test_TQ" } ),
+		joinColumns=@JoinColumn(name="id_questionnqire_TQ", referencedColumnName="id_questionnaire"),
+	    inverseJoinColumns=@JoinColumn(name="id_test_TQ", referencedColumnName="id_test")
+	)
+	private List<Questionnaire> questionnaires;
 
 	public int getId() {
 		return id;

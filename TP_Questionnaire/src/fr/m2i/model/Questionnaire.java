@@ -26,6 +26,9 @@ public class Questionnaire {
 	
 	@OneToMany(mappedBy="quest", fetch=FetchType.EAGER)
 	private List<Question> questions;
+	
+	
+	
 
 	public int getIdQuestionnaire() {
 		return idQuestionnaire;
