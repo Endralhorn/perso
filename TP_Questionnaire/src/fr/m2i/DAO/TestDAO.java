@@ -18,12 +18,7 @@ public class TestDAO implements IDAO {
 	@PersistenceContext
 	EntityManager em;
 	
-	public void save(Test t){
-		
-		em.persist(t);
-		
-	}
-
+	
 	@Override
 	public List findAll() {
 		// TODO Auto-generated method stub
@@ -37,8 +32,8 @@ public class TestDAO implements IDAO {
 	}
 
 	@Override
-	public Object save(Object obj) {
-		// TODO Auto-generated method stub
+	public Object save(Test test) {
+		em.persist(test);
 		return null;
 	}
 
