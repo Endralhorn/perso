@@ -31,6 +31,7 @@ public class Proposition {
 	@ManyToMany(mappedBy="propositions")
 	List<Cletest> candidatsTests;
 
+
 	public int getIdProposition() {
 		return idProposition;
 	}

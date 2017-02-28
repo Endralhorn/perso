@@ -37,7 +37,7 @@ public class Cletest implements Serializable {
 	@ManyToMany(fetch=FetchType.EAGER)//(cascade=CascadeType.MERGE)
 	@JoinTable(
 		name="reponse_test",
-		uniqueConstraints = @UniqueConstraint( columnNames = { "id_proposition_RT", "cle_unique" } ),
+		uniqueConstraints = @UniqueConstraint( columnNames = { "id_proposition_RT", "cle_unique_RT" } ),
 		joinColumns=@JoinColumn(name="cle_unique_RT", referencedColumnName="cle_unique"),
 	    inverseJoinColumns=@JoinColumn(name="id_proposition_RT", referencedColumnName="id_proposition")
 	)

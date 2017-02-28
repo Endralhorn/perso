@@ -37,9 +37,9 @@ public class Test implements Serializable {
 	@ManyToMany(fetch=FetchType.EAGER)//(cascade=CascadeType.MERGE)
 	@JoinTable(
 		name="test_QCM",
-		uniqueConstraints = @UniqueConstraint( columnNames = { "id_questionnqire_TQ", "id_test_TQ" } ),
-		joinColumns=@JoinColumn(name="id_questionnqire_TQ", referencedColumnName="id_questionnaire"),
-	    inverseJoinColumns=@JoinColumn(name="id_test_TQ", referencedColumnName="id_test")
+		uniqueConstraints = @UniqueConstraint( columnNames = { "id_questionnaire_TQ", "id_test_TQ" } ),
+		joinColumns=@JoinColumn(name="id_test_TQ", referencedColumnName="id_test"),
+	    inverseJoinColumns=@JoinColumn(name="id_questionnaire_TQ", referencedColumnName="id_questionnaire")
 	)
 	private List<Questionnaire> questionnaires;
 

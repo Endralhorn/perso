@@ -56,14 +56,7 @@ public class Personne implements Serializable {
 		this.age = age;
 	}
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -82,7 +75,4 @@ public class Personne implements Serializable {
 	@Column (name="age_personne")
 	private int age;
 	
-	@Column (name="type_personne")
-	private String type;
-
 }

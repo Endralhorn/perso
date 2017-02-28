@@ -25,7 +25,7 @@ public class Questionnaire {
 	@Column(name="nom_questionnaire")
 	private String nomQuestionnaire;
 	
-	@OneToMany(mappedBy="quest", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="idQuestionnaire", fetch=FetchType.EAGER)
 	private List<Question> questions;
 	
 	@ManyToMany(mappedBy="questionnaires")

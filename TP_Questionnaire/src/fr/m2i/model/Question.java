@@ -32,7 +32,7 @@ public class Question {
 	@JoinColumn(name="idQuestionnaire")
 	private Questionnaire idQuestionnaire;
 	
-	@OneToMany(mappedBy="question", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="idQuestion", fetch=FetchType.EAGER)
 	private List<Proposition> propositions;
 	
 
