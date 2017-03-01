@@ -17,22 +17,22 @@
 	
 	<definition name="editTest" extends="base.definition">
 		<put-attribute name="title" value="Edition des tests" />
-		<put-attribute name="body" value="/WEB-INF/views/jsp/tetrimino/editTest.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/jsp/test/editTest.jsp" />
 	</definition>
 	
 	<definition name="editQuestionnaire" extends="base.definition">
 		<put-attribute name="title" value="Edition des Questionnaires" />
-		<put-attribute name="body" value="/WEB-INF/views/jsp/tetrimino/editQuestionnaire.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/jsp/test/editQuestionnaire.jsp" />
 	</definition>
 	
 	<definition name="editQuestion" extends="base.definition">
 		<put-attribute name="title" value="Edition des Questions" />
-		<put-attribute name="body" value="/WEB-INF/views/jsp/tetrimino/editQuestion.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/jsp/test/editQuestion.jsp" />
 	</definition>
 	
 	<definition name="editProposition" extends="base.definition">
 		<put-attribute name="title" value="Edition des Proposition" />
-		<put-attribute name="body" value="/WEB-INF/views/jsp/tetrimino/editProposition.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/jsp/test/editProposition.jsp" />
 	</definition>
 	
 </tiles-definitions>
