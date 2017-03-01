@@ -26,9 +26,6 @@ public class Question {
 	@Column(name="texte_question")
 	private String texteQuestion;
 	
-	@OneToOne
-	@JoinColumn(name="id_reponse_correct")
-	private Proposition bonneReponse;
 	
 	@ManyToOne
 	@JoinColumn(name="idQuestionnaire")
@@ -65,14 +62,7 @@ public class Question {
 		this.idQuestionnaire = idQuestionnaire;
 	}
 
-	public Proposition getBonneReponse() {
-		return bonneReponse;
-	}
-
-	public void setBonneReponse(Proposition bonneReponse) {
-		this.bonneReponse = bonneReponse;
-	}
-
+	
 	public List<Proposition> getPropositions() {
 		return propositions;
 	}
@@ -90,11 +80,7 @@ public class Question {
 		this.texteQuestion = texteQuestion;
 	}
 
-	public Question(String texteQuestion, Proposition bonneReponse) {
-		super();
-		this.texteQuestion = texteQuestion;
-		this.bonneReponse = bonneReponse;
-	}
+	
 	
 	
 	

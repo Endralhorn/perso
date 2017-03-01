@@ -23,17 +23,17 @@ import fr.m2i.model.Test;
 public class QuestionController {
 	
 	@Autowired
-	private IDAO<Question, Integer> qusetionDAO;
+	private IDAO<Question, Integer> questionDAO;
 	
 	@Autowired
 	private IDAO<Proposition, Integer> propositionDAO;
 
 	public IDAO<Question, Integer> getQusetionDAO() {
-		return qusetionDAO;
+		return questionDAO;
 	}
 
-	public void setQusetionDAO(IDAO<Question, Integer> qusetionDAO) {
-		this.qusetionDAO = qusetionDAO;
+	public void setQusetionDAO(IDAO<Question, Integer> questionDAO) {
+		this.questionDAO = questionDAO;
 	}
 
 	public IDAO<Proposition, Integer> getPropositionDAO() {
@@ -49,7 +49,7 @@ public class QuestionController {
 	@RequestMapping(value = "/questions", method=RequestMethod.GET)
 	public String questions(Model model, 
 							HttpSession session) {
-		List<Question> myQuestion = this.qusetionDAO.findAll();
+		List<Question> myQuestion = this.questionDAO.findAll();
 		model.addAttribute("questions", myQuestion);
 		model.addAttribute("montrerActions","true");
 		model.addAttribute("title", "Liste de questions");
@@ -67,7 +67,7 @@ public class QuestionController {
 		if (questionId != null)
 		{
 //			String myTetriminoId = req.getParameter("tetrimino_id");
-			myQuestion = (Question)this.qusetionDAO.find(questionId); 
+			myQuestion = (Question)this.questionDAO.find(questionId); 
 			
 			if (myQuestion == null)
 			{

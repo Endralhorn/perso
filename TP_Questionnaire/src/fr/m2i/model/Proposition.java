@@ -30,6 +30,12 @@ public class Proposition {
 	
 	@ManyToMany(mappedBy="propositions")
 	List<Cletest> candidatsTests;
+	
+	
+	@Column(name="correcte_proposition")
+	private boolean propositionCorrect;
+	
+	
 
 
 	public int getIdProposition() {
