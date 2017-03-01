@@ -11,7 +11,7 @@
 	</definition>
 	
 	<definition name="questions" extends="base.definition">
-		<put-attribute name="title" value="Edition des questions" />
+		<put-attribute name="title" value="Questions" />
 		<put-attribute name="body" value="/WEB-INF/views/jsp/test/questions.jsp" />
 	</definition>
 	
