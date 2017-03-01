@@ -82,13 +82,13 @@ public class QuestionController {
 		else
 		{
 			myQuestion = new Question("Pas de nom");
-			model.addAttribute("title", "Nouveau test");
+			model.addAttribute("title", "Nouvelle question");
 //			myTitre = "Nouveau tetrimino";
 		}
 		
-		session.setAttribute("test", myTest);
-		List<Questionnaire> questionnaires = myTest.getQuestionnaires();
-		session.setAttribute("questionnaires", questionnaires);
+		session.setAttribute("question", myQuestion);
+		List<Proposition> propositions = myQuestion.getPropositions();
+		session.setAttribute("propositions", propositions);
 		return "editQuestion";
 		
 	}
@@ -96,7 +96,7 @@ public class QuestionController {
 	
 	
 	
-	@RequestMapping(value = "/editTest", method=RequestMethod.POST)
+	@RequestMapping(value = "/editQuestion", method=RequestMethod.POST)
 	public String editTestPost(@RequestParam(value="test_id", required=false) Integer testId,
 									@RequestParam String testNom,
 								Model model, 
@@ -119,8 +119,8 @@ public class QuestionController {
 	}
 		
 	
-	@RequestMapping(value = "/tests", method=RequestMethod.GET)
-	public String tests(Model model, 
+	@RequestMapping(value = "/propositions", method=RequestMethod.GET)
+	public String propositions(Model model, 
 			HttpSession session) {
 		List<Test> myTest = this.testDAO.findAll();
 		model.addAttribute("tests", myTest);
@@ -130,8 +130,8 @@ public class QuestionController {
 	return "tests";
 	}
 	
-	@RequestMapping(value = "/editQuestionnaire", method=RequestMethod.GET)
-	public String editQuestionnaireGet(@RequestParam(value="questionnaire_id", required=false) Integer questionnaireId,
+	@RequestMapping(value = "/editPropositions", method=RequestMethod.GET)
+	public String editPropositionsGet(@RequestParam(value="questionnaire_id", required=false) Integer questionnaireId,
 										@RequestParam(value="test_id", required=false) Integer testId,
 								Model model, 
 								HttpSession session) {
@@ -152,8 +152,8 @@ public class QuestionController {
 	}
 	
 	
-	@RequestMapping(value = "/editQuestionnaire", method=RequestMethod.POST)
-	public String editQuestionnairePost(@RequestParam(value="questionnaire_id", required=false) Integer questionnaireId,
+	@RequestMapping(value = "/editPropositions", method=RequestMethod.POST)
+	public String editPropositionsPost(@RequestParam(value="questionnaire_id", required=false) Integer questionnaireId,
 										@RequestParam(value="test_id", required=false) Integer testId,
 										@RequestParam(value="questionnaire_nom", required=false) String questinnaireNom,
 								Model model, 
