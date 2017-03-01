@@ -20,7 +20,7 @@
 
 
 	<!-- On précise les ressources -->
-<!-- 	<mvc:resources mapping="/resources/**" location="/resources/" /> -->
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 
 	<!-- Configuration de la technologie de rendu -->
