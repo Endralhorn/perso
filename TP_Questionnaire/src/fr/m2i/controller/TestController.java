@@ -93,7 +93,7 @@ public class TestController {
 	
 	@RequestMapping(value = "/editTest", method=RequestMethod.POST)
 	public String editTestPost(@RequestParam(value="test_id", required=false) Integer testId,
-									@RequestParam String testNom,
+									@RequestParam(value="test_nom", required=false) String testNom,
 								Model model, 
 								HttpSession session) {
 		Test myTest = (Test) this.testDAO.find(testId);

@@ -7,7 +7,7 @@
 
 
 <div class="fixed-action-btn">
-	<a href="editTetrimino" class="btn-floating btn-large red">
+	<a href="editTest" class="btn-floating btn-large red">
 		<i class="large material-icons">add</i>
 	</a>
 </div>
@@ -15,17 +15,17 @@
 
 
 <div class="row">
-	<c:forEach items="${ tetriminos }" var="tetrimino">
+	<c:forEach items="${ tests }" var="test">
 		<div class="col l3 s12">
 			<div class="card">
 				<div class="card-image waves-effect waves-block waves-light">
-					<div class="activator valign-wrapper" style="height:17em; background-color:#${ tetrimino.couleur };">
-						<h5 class="valign white-text center-align" style="width: 100%;">${ tetrimino.nom }</h5>
+					<div class="activator valign-wrapper" style="height:17em; background-color:grey;">
+						<h5 class="valign white-text center-align" style="width: 100%;">${ test.nomTest }</h5>
 					</div>
 				</div>
 				
 				<div class="card-content">
-					<span class="card-title activator grey-text text-darken-4">${ tetrimino.nom }<i class="material-icons right">more_vert</i></span>
+					<span class="card-title activator grey-text text-darken-4">${ test.nomTest }<i class="material-icons right">more_vert</i></span>
 					
 					<p>
 						<a class="activator" href="#">Détails</a>
@@ -35,13 +35,13 @@
 				
 				<c:if test="${ montrerActions }">
 					<div class="card-action">
-						<a href="${ pageContext.request.contextPath }/deleteTetrimino?tetrimino_id=${ tetrimino.id }">RETIRER</a>
-						<a href="${ pageContext.request.contextPath }/editTetrimino?tetrimino_id=${ tetrimino.id }">EDITER</a>
+						<a href="${ pageContext.request.contextPath }/deleteTest?test_id=${ test.id }">RETIRER</a>
+						<a href="${ pageContext.request.contextPath }/editTest?test_id=${ test.id }">EDITER</a>
 					</div>
 				</c:if>
 				
 				<div class="card-reveal">
-					<span class="card-title grey-text text-darken-4">${ tetrimino.nom }<i class="material-icons right">close</i></span>
+					<span class="card-title grey-text text-darken-4">${ test.nomTest }<i class="material-icons right">close</i></span>
 					<table>
 						<thead>
 							<tr>
@@ -53,18 +53,14 @@
 						<tbody>
 							<tr>
 								<td>ID</td>
-								<td>${ tetrimino.id }</td>
+								<td>${ test.id }</td>
 							</tr>
 							
 							<tr>
 								<td>Nom</td>
-								<td>${ tetrimino.nom }</td>
+								<td>${ test.nomTest }</td>
 							</tr>
 							
-							<tr>
-								<td>Couleur</td>
-								<td>${ tetrimino.couleur }</td>
-							</tr>
 						</tbody>
 					</table>
 				</div>

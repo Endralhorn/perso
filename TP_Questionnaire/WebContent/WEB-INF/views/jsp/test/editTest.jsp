@@ -6,18 +6,13 @@
 
 <div class="row">
 	<div class="col s3">
-		<h5>Formulaire tetrimino</h5>
+		<h5>Formulaire test</h5>
 		<form method="post">
-			<input type="hidden" name="tetrimino_id" value="${ tetrimino.id }" />
+			<input type="hidden" name="test_id" value="${ test.id }" />
 			
 			<div class="input-field">
-				<input id="tetrimino_nom" type="text" class="validate" name="tetrimino_nom" value="${ tetrimino.nom }" />
-				<label for="tetrimino_nom">Nom</label>
-			</div>
-			
-			<div class="input-field">
-				<input id="tetrimino_couleur" type="text" class="validate" name="tetrimino_couleur" value="${ tetrimino.couleur }" />
-				<label for="tetrimino_couleur">Couleur</label>
+				<input id="test_nom" type="text" class="validate" name="test_nom" value="${ test.nomTest }" />
+				<label for="test_nom">Nom</label>
 			</div>
 			
 			<button class="btn waves-effect waves-light" type="submit">
@@ -27,59 +22,32 @@
 	</div>
 	
 	<div class="col s9">
-		<c:if test="${ tetrimino.id != null }">
+		<c:if test="${ test.id != null }">
 			<div class="fixed-action-btn">
-				<a href="${ pageContext.request.contextPath }/editBloc?tetrimino_id=${ tetrimino.id }" class="btn-floating btn-large red">
+				<a href="${ pageContext.request.contextPath }/editQuestionnaire?test_id=${ test.id }" class="btn-floating btn-large red">
 					<i class="large material-icons">add</i>
 				</a>
 			</div>
 			
 			
-			<h5>Liste des blocs</h5>
-			
-<!-- 			<div class="row"> -->
-<!-- 				<div class="col s1"> -->
-<!-- 					<table class="striped centered"> -->
-<%-- 						<c:forEach begin="0" end="3" step="1" var="i"> --%>
-<!-- 							<tr> -->
-<%-- 								<c:forEach begin="0" end="3" step="1" var="j"> --%>
-<!-- 									<td> -->
-<%-- 										<c:set var="bloc" value="${ tetrimino.findBloc(j, i) }" /> --%>
-										
-<%-- 										<c:if test="${ bloc != null }"> --%>
-<%-- 											<a href="${ pageContext.request.contextPath }/deleteBloc?tetrimino_id=${ tetrimino.id }&bloc_id=${ bloc.id }"><i class="material-icons">delete</i></a> --%>
-<%-- 											<a href="${ pageContext.request.contextPath }/editBloc?tetrimino_id=${ tetrimino.id }&bloc_id=${ bloc.id }">${ bloc.poids }</a> --%>
-<%-- 										</c:if> --%>
-										
-<%-- 										<c:if test="${ bloc == null }"> --%>
-<%-- 											<a href="${ pageContext.request.contextPath }/editBloc?tetrimino_id=${ tetrimino.id }&position_x=${ j }&position_y=${ i }"> --%>
-<!-- 												<i class="material-icons">add</i> -->
-<!-- 											</a> -->
-<%-- 										</c:if> --%>
-<!-- 									</td> -->
-<%-- 								</c:forEach> --%>
-<!-- 							</tr> -->
-<%-- 						</c:forEach> --%>
-<!-- 					</table> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-			
+			<h5>Liste des questionnaires</h5>
+				
 			
 			<div class="row">
 				<ul class="collapsible" data-collapsible="accordion">
-					<c:forEach items="${ tetrimino.blocs }" var="bloc">
+					<c:forEach items="${ test.questionnaires }" var="bloc">
 						<li>
 							<div class="collapsible-header">
-								<a href="${ pageContext.request.contextPath }/editBloc?tetrimino_id=${ tetrimino.id }&bloc_id=${ bloc.id }"><i class="material-icons">mode_edit</i></a>
-								<a href="${ pageContext.request.contextPath }/deleteBloc?tetrimino_id=${ tetrimino.id }&bloc_id=${ bloc.id }"><i class="material-icons">delete</i></a>
-								x: ${ bloc.positionX }, y: ${ bloc.positionY }
+								<a href="${ pageContext.request.contextPath }/editQuestionnaire?test_id=${ test.id }&questionnaire_id=${ questionnaire.idQuestionnaire }"><i class="material-icons">mode_edit</i></a>
+								<a href="${ pageContext.request.contextPath }/deleteQuestionnaire?test_id=${ test.id }&questionnaire_id=${ questionnaire.idQuestionnaire }"><i class="material-icons">delete</i></a>
+								Nom: ${ questionnaire.nomQuestionnaire }
 							</div>
 							
 							<div class="collapsible-body">
 								<p>
-									Poids : ${ bloc.poids }<br />
-									Position X : ${ bloc.positionX }<br />
-									Position Y : ${ bloc.positionY }
+									ID: ${ questionnaire.idQuestionnaire }<br />
+									Nom: ${ questionnaire.nomQuestionnaire }<br />
+									Nombre Questions: ${ questionnaire.questions.size() }
 								</p>
 							</div>
 						</li>
