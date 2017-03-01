@@ -27,6 +27,10 @@ public class QuestionController {
 	
 	@Autowired
 	private IDAO<Proposition, Integer> propositionDAO;
+	
+	@Autowired
+	private IDAO<Questionnaire, Integer> questionnaireDAO;
+	
 
 	public IDAO<Question, Integer> getQusetionDAO() {
 		return questionDAO;
@@ -97,87 +101,143 @@ public class QuestionController {
 	
 	
 	@RequestMapping(value = "/editQuestion", method=RequestMethod.POST)
-	public String editTestPost(@RequestParam(value="test_id", required=false) Integer testId,
-									@RequestParam String testNom,
+	public String editQuestionPost(@RequestParam(value="question_id", required=false) Integer questionId,
+									@RequestParam(value="questionnaire_id", required=false) Integer questionnaireId,
+									@RequestParam(value="texte_question", required=false) String texteQuestion,
 								Model model, 
 								HttpSession session) {
-		Test myTest = (Test) this.testDAO.find(testId);
+		Questionnaire myQuestionnaire = (Questionnaire) this.questionnaireDAO.find(questionnaireId);
+		Question myQuestion = (Question) this.questionDAO.find(questionId);
 		
 		// Si on ne trouve pas le Tetrimino, c'est que l'on est en train de l'ajouter !
-		if (myTest == null)
+		if (myQuestion == null)
 		{
-			myTest = new Test();
+			myQuestion = new Question();
 		}
 		
 		
-		myTest.setNomTest(testNom);
+		myQuestion.setTexteQuestion(texteQuestion);
+		myQuestionnaire.addQuestion(myQuestion);
+		this.questionDAO.save(myQuestion);
+		this.questionnaireDAO.save(myQuestionnaire);
 		
+		List<Question> questions = myQuestionnaire.getQuestions();
+		session.setAttribute("questions", questions);
 		
-		this.testDAO.save(myTest);
-		return "redirect:/tests";
+		return "redirect:/questions";
+		
+	}
+	
+	@RequestMapping(value = "/deleteQuestion", method=RequestMethod.GET)
+	public String deleteQuestionGet(@RequestParam(value="question_id", required=false) Integer questionId,
+										@RequestParam(value="questionnaire_id", required=false) Integer questionnaireId,
+										Model model, 
+										HttpSession session) {
+		try
+		{
+			
+			this.questionDAO.delete(this.questionDAO.find(questionId));
+		}
+		
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		Questionnaire myQuestionnaire = (Questionnaire) this.questionnaireDAO.find(questionnaireId);
+		
+		List<Question> questions = myQuestionnaire.getQuestions();
+		session.setAttribute("questions", questions);
+		
+		return "questions";
 		
 	}
 		
 	
 	@RequestMapping(value = "/propositions", method=RequestMethod.GET)
 	public String propositions(Model model, 
-			HttpSession session) {
-		List<Test> myTest = this.testDAO.findAll();
-		model.addAttribute("tests", myTest);
+								HttpSession session) {
+		List<Proposition> myPropositions = this.propositionDAO.findAll();
+		model.addAttribute("propositions", myPropositions);
 		model.addAttribute("montrerActions","true");
-		model.addAttribute("title", "Liste de tests");
+		model.addAttribute("title", "Liste de Propositions");
 			
-	return "tests";
+	return "editQuestion";
 	}
 	
 	@RequestMapping(value = "/editPropositions", method=RequestMethod.GET)
-	public String editPropositionsGet(@RequestParam(value="questionnaire_id", required=false) Integer questionnaireId,
-										@RequestParam(value="test_id", required=false) Integer testId,
-								Model model, 
-								HttpSession session) {
-		Questionnaire myQuestionnaire = null;
+	public String editPropositionsGet(@RequestParam(value="proposition_id", required=false) Integer propositionId,
+										@RequestParam(value="question_id", required=false) Integer questionId,
+										Model model, 
+										HttpSession session) {
+		Proposition myProposition = null;
 
-		if (questionnaireId != null)
+		if (propositionId != null)
 		{
 
-			myQuestionnaire = (Questionnaire)this.questionnaireDAO.find(questionnaireId); 
-			model.addAttribute("questionnaire", myQuestionnaire);
-			model.addAttribute("title", "Edition Questionnaire");
+			myProposition = (Proposition)this.propositionDAO.find(propositionId); 
+			model.addAttribute("proposition", myProposition);
+			model.addAttribute("title", "Edition Proposition");
 
 		}
 			
-		model.addAttribute("test", this.testDAO.find(testId));
-		return "editQuestionnaire";
+		model.addAttribute("question", this.questionDAO.find(questionId));
+		return "editQuestion";
 		
 	}
 	
 	
 	@RequestMapping(value = "/editPropositions", method=RequestMethod.POST)
-	public String editPropositionsPost(@RequestParam(value="questionnaire_id", required=false) Integer questionnaireId,
-										@RequestParam(value="test_id", required=false) Integer testId,
-										@RequestParam(value="questionnaire_nom", required=false) String questinnaireNom,
-								Model model, 
-								HttpSession session) {
-		Test myTest = (Test) this.testDAO.find(testId);
-		Questionnaire myQuestionnaire = (questionnaireId != null) ? (Questionnaire)this.questionnaireDAO.find(questionnaireId) : null;
+	public String editPropositionsPost(@RequestParam(value="proposition_id", required=false) Integer propositionId,
+										@RequestParam(value="question_id", required=false) Integer questionId,
+										@RequestParam(value="proposition_nom", required=false) String propositionNom,
+										Model model, 
+										HttpSession session) {
+		Question myQuestion = (Question) this.questionDAO.find(questionId);
+		Proposition myProposition = (propositionId != null) ? (Proposition)this.propositionDAO.find(propositionId) : null;
 		
 		// Si on ne trouve pas le Tetrimino, c'est que l'on est en train de l'ajouter !
-		if (myQuestionnaire == null)
+		if (myProposition == null)
 		{
-			myQuestionnaire = new Questionnaire();
+			myProposition = new Proposition();
 		}
 		
 		
-		myQuestionnaire.setNomQuestionnaire(questinnaireNom);
-		myTest.addQuestionnaire(myQuestionnaire);
-		this.questionnaireDAO.save(myQuestionnaire);
-		this.testDAO.save(myTest);
+		myProposition.setTexteProposition(propositionNom);
+		myQuestion.addProposition(myProposition);
+		this.propositionDAO.save(myProposition);
+		this.questionDAO.save(myQuestion);
 		
-		List<Questionnaire> questionnaires = myTest.getQuestionnaires();
-		session.setAttribute("questionnaires", questionnaires);
+		List<Proposition> propositions = myQuestion.getPropositions();
+		session.setAttribute("propositions", propositions);
 		
 		
-		return "editTest";
+		return "editQuestion";
+		
+	}
+	
+	@RequestMapping(value = "/deleteProposition", method=RequestMethod.GET)
+	public String deletePropositionGet(@RequestParam(value="propositions_id", required=false) Integer propositionsId,
+										@RequestParam(value="question_id", required=false) Integer questionId,
+										Model model, 
+										HttpSession session) {
+		try
+		{
+			
+			this.propositionDAO.delete(this.propositionDAO.find(propositionsId));
+		}
+		
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		Question myQuestion = (Question) this.questionDAO.find(questionId);
+		
+		List<Proposition> propositions = myQuestion.getPropositions();
+		session.setAttribute("propositions", propositions);
+		
+		return "editQuestion";
 		
 	}
 

@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -70,6 +69,10 @@ public class Question {
 
 	public void setPropositions(List<Proposition> propositions) {
 		this.propositions = propositions;
+	}
+	
+	public void addProposition(Proposition myProposition) {
+		this.propositions.add(myProposition);
 	}
 
 	public Question() {

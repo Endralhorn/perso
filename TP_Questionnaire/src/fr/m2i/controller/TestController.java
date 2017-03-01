@@ -45,8 +45,8 @@ public class TestController {
 	@RequestMapping(value = "/tests", method=RequestMethod.GET)
 	public String tests(Model model, 
 			HttpSession session) {
-		List<Test> myTest = this.testDAO.findAll();
-		model.addAttribute("tests", myTest);
+		List<Test> myTests = this.testDAO.findAll();
+		model.addAttribute("tests", myTests);
 		model.addAttribute("montrerActions","true");
 		model.addAttribute("title", "Liste de tests");
 			
@@ -117,12 +117,12 @@ public class TestController {
 	@RequestMapping(value = "/questionnaires", method=RequestMethod.GET)
 	public String questionnaires(Model model, 
 								HttpSession session) {
-		List<Questionnaire> myQuestionnaire = this.questionnaireDAO.findAll();
-		model.addAttribute("questionnaires", myQuestionnaire);
+		List<Questionnaire> myQuestionnaires = this.questionnaireDAO.findAll();
+		model.addAttribute("questionnaires", myQuestionnaires);
 		model.addAttribute("montrerActions","true");
 		model.addAttribute("title", "Liste de questionnaires");
 			
-	return "questionnaires";
+	return "editTest";
 	}
 	
 	
@@ -177,6 +177,29 @@ public class TestController {
 		
 	}
 
-	
+	@RequestMapping(value = "/deleteQuestionnaire", method=RequestMethod.GET)
+	public String deleteQuestionnaireGet(@RequestParam(value="questionnaire_id", required=false) Integer questionnaireId,
+										@RequestParam(value="test_id", required=false) Integer testId,
+										Model model, 
+										HttpSession session) {
+		try
+		{
+			
+			this.questionnaireDAO.delete(this.questionnaireDAO.find(questionnaireId));
+		}
+		
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		Test myTest = (Test) this.testDAO.find(testId);
+		
+		List<Questionnaire> questionnaires = myTest.getQuestionnaires();
+		session.setAttribute("questionnaires", questionnaires);
+		
+		return "editTest";
+		
+	}
 	
 }

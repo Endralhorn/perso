@@ -54,6 +54,10 @@ public class Questionnaire {
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
+	
+	public void addQuestion(Question myQuestion) {
+		this.questions.add(myQuestion);
+	}
 
 	public Questionnaire(String nomQuestionnaire) {
 		super();
