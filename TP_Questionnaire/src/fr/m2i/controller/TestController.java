@@ -55,16 +55,16 @@ public class TestController {
 	
 	
 	@RequestMapping(value = "/editTest", method=RequestMethod.GET)
-	public String editTestGet(@RequestParam(value="test_id", required=false) Integer test_id,
+	public String editTestGet(@RequestParam(value="test_id", required=false) Integer testId,
 								Model model, 
 								HttpSession session) {
 		Test myTest = null;
 //		String myTitre;
 
-		if (test_id != null)
+		if (testId != null)
 		{
 //			String myTetriminoId = req.getParameter("tetrimino_id");
-			myTest = (Test)this.testDAO.find(test_id); 
+			myTest = (Test)this.testDAO.find(testId); 
 			
 			if (myTest == null)
 			{
@@ -92,11 +92,11 @@ public class TestController {
 	
 	
 	@RequestMapping(value = "/editTest", method=RequestMethod.POST)
-	public String editTestPost(@RequestParam(value="test_id", required=false) Integer test_id,
-									@RequestParam String test_nom,
+	public String editTestPost(@RequestParam(value="test_id", required=false) Integer testId,
+									@RequestParam String testNom,
 								Model model, 
 								HttpSession session) {
-		Test myTest = (Test) this.testDAO.find(test_id);
+		Test myTest = (Test) this.testDAO.find(testId);
 		
 		// Si on ne trouve pas le Tetrimino, c'est que l'on est en train de l'ajouter !
 		if (myTest == null)
@@ -105,7 +105,7 @@ public class TestController {
 		}
 		
 		
-		myTest.setNomTest(test_nom);
+		myTest.setNomTest(testNom);
 		
 		
 		this.testDAO.save(myTest);
@@ -114,62 +114,66 @@ public class TestController {
 	}
 		
 	
+	@RequestMapping(value = "/questionnaires", method=RequestMethod.GET)
+	public String questionnaires(Model model, 
+								HttpSession session) {
+		List<Questionnaire> myQuestionnaire = this.questionnaireDAO.findAll();
+		model.addAttribute("questionnaires", myQuestionnaire);
+		model.addAttribute("montrerActions","true");
+		model.addAttribute("title", "Liste de questionnaires");
+			
+	return "questionnaires";
+	}
+	
+	
 	@RequestMapping(value = "/editQuestionnaire", method=RequestMethod.GET)
-	public String editQuestionnaireGet(@RequestParam(value="questionnaire_id", required=false) Integer questionnaire_id,
+	public String editQuestionnaireGet(@RequestParam(value="questionnaire_id", required=false) Integer questionnaireId,
+										@RequestParam(value="test_id", required=false) Integer testId,
 								Model model, 
 								HttpSession session) {
 		Questionnaire myQuestionnaire = null;
-//		String myTitre;
 
-		if (questionnaire_id != null)
+		if (questionnaireId != null)
 		{
-//			String myTetriminoId = req.getParameter("tetrimino_id");
-			myQuestionnaire = (Questionnaire)this.questionnaireDAO.find(questionnaire_id); 
-			
-			if (myQuestionnaire == null)
-			{
-				
-				return "redirect:/home";
-			}
-			
-			model.addAttribute("title", "Edition Test");
-//			myTitre = "Edition Tetrimino";
+
+			myQuestionnaire = (Questionnaire)this.questionnaireDAO.find(questionnaireId); 
+			model.addAttribute("questionnaire", myQuestionnaire);
+			model.addAttribute("title", "Edition Questionnaire");
+
 		}
-		
-		else
-		{
-			myTest = new Test("Pas de nom");
-			model.addAttribute("title", "Nouveau test");
-//			myTitre = "Nouveau tetrimino";
-		}
-		
-		session.setAttribute("test", myTest);
-		List<Questionnaire> questionnaires = myTest.getQuestionnaires();
-		session.setAttribute("questionnaires", questionnaires);
-		return "editTest";
+			
+		model.addAttribute("test", this.testDAO.find(testId));
+		return "editQuestionnaire";
 		
 	}
 	
 	
 	@RequestMapping(value = "/editQuestionnaire", method=RequestMethod.POST)
-	public String editQuestionnairePost(@RequestParam(value="test_id", required=false) Integer test_id,
-									@RequestParam String test_nom,
+	public String editQuestionnairePost(@RequestParam(value="questionnaire_id", required=false) Integer questionnaireId,
+										@RequestParam(value="test_id", required=false) Integer testId,
+										@RequestParam(value="questionnaire_nom", required=false) String questinnaireNom,
 								Model model, 
 								HttpSession session) {
-		Test myTest = (Test) this.testDAO.find(test_id);
+		Test myTest = (Test) this.testDAO.find(testId);
+		Questionnaire myQuestionnaire = (questionnaireId != null) ? (Questionnaire)this.questionnaireDAO.find(questionnaireId) : null;
 		
 		// Si on ne trouve pas le Tetrimino, c'est que l'on est en train de l'ajouter !
-		if (myTest == null)
+		if (myQuestionnaire == null)
 		{
-			myTest = new Test();
+			myQuestionnaire = new Questionnaire();
 		}
 		
 		
-		myTest.setNomTest(test_nom);
-		
-		
+		myQuestionnaire.setNomQuestionnaire(questinnaireNom);
+		myTest.addQuestionnaire(myQuestionnaire);
+		this.questionnaireDAO.save(myQuestionnaire);
 		this.testDAO.save(myTest);
-		return "redirect:/tests";
+		
+		List<Questionnaire> questionnaires = myTest.getQuestionnaires();
+		session.setAttribute("questionnaires", questionnaires);
+		
+		
+		return "editTest";
 		
 	}
 

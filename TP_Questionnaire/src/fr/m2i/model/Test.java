@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+
 @Entity
 @Table(name="test")
 public class Test implements Serializable {
@@ -57,6 +58,10 @@ public class Test implements Serializable {
 
 	public void setNomTest(String nomTest) {
 		this.nomTest = nomTest;
+	}
+	
+	public void addQuestionnaire(Questionnaire myQuestionnaire) {
+		this.questionnaires.add(myQuestionnaire);
 	}
 
 	public Test() {

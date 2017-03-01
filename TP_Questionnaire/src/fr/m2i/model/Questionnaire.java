@@ -54,6 +54,15 @@ public class Questionnaire {
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
+
+	public Questionnaire(String nomQuestionnaire) {
+		super();
+		this.nomQuestionnaire = nomQuestionnaire;
+	}
+
+	public Questionnaire() {
+		super();
+	}
 	
 	
 	

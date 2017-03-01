@@ -80,6 +80,21 @@ public class Question {
 	public void setPropositions(List<Proposition> propositions) {
 		this.propositions = propositions;
 	}
+
+	public Question() {
+		super();
+	}
+
+	public Question(String texteQuestion) {
+		super();
+		this.texteQuestion = texteQuestion;
+	}
+
+	public Question(String texteQuestion, Proposition bonneReponse) {
+		super();
+		this.texteQuestion = texteQuestion;
+		this.bonneReponse = bonneReponse;
+	}
 	
 	
 	
