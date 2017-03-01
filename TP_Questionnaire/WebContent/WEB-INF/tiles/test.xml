@@ -11,13 +11,28 @@
 	</definition>
 	
 	<definition name="questions" extends="base.definition">
-		<put-attribute name="title" value="Edit Tetrimino" />
-		<put-attribute name="body" value="/WEB-INF/views/jsp/test/editTest.jsp" />
+		<put-attribute name="title" value="Edition des questions" />
+		<put-attribute name="body" value="/WEB-INF/views/jsp/test/questions.jsp" />
 	</definition>
 	
-	<definition name="editBloc" extends="base.definition">
-		<put-attribute name="title" value="Edit Bloc" />
-		<put-attribute name="body" value="/WEB-INF/views/jsp/tetrimino/editBloc.jsp" />
+	<definition name="editTest" extends="base.definition">
+		<put-attribute name="title" value="Edition des tests" />
+		<put-attribute name="body" value="/WEB-INF/views/jsp/tetrimino/editTest.jsp" />
+	</definition>
+	
+	<definition name="editQuestionnaire" extends="base.definition">
+		<put-attribute name="title" value="Edition des Questionnaires" />
+		<put-attribute name="body" value="/WEB-INF/views/jsp/tetrimino/editQuestionnaire.jsp" />
+	</definition>
+	
+	<definition name="editQuestion" extends="base.definition">
+		<put-attribute name="title" value="Edition des Questions" />
+		<put-attribute name="body" value="/WEB-INF/views/jsp/tetrimino/editQuestion.jsp" />
+	</definition>
+	
+	<definition name="editProposition" extends="base.definition">
+		<put-attribute name="title" value="Edition des Proposition" />
+		<put-attribute name="body" value="/WEB-INF/views/jsp/tetrimino/editProposition.jsp" />
 	</definition>
 	
 </tiles-definitions>
