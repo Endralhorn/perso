@@ -7,11 +7,12 @@
 		<div class="container">
 			<a href="#" class="brand-logo">TQ - ${ titleCode }</a>
 			
-			<c:if test="${ utilisateur != null }">
+			<c:if test="${ administrateur != null }">
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a href="${ pageContext.request.contextPath }/home">Accueil</a></li>
-					<li><a href="${ pageContext.request.contextPath }/tetriminos">Tetriminos</a></li>
-					<li><a href="${ pageContext.request.contextPath }/parties">Parties</a></li>
+					<li><a href="${ pageContext.request.contextPath }/tests">Tests</a></li>
+					<li><a href="${ pageContext.request.contextPath }/questions">}Questions</a></li>
+					<li><a href="${ pageContext.request.contextPath }/candidats">}Candidats</a></li>
 				</ul>
 			</c:if>
 		</div>
