@@ -34,8 +34,7 @@
 			<value>/WEB-INF/tiles/layout.xml</value>
 			<value>/WEB-INF/tiles/home.xml</value>
 			<value>/WEB-INF/tiles/account.xml</value>
-			<value>/WEB-INF/tiles/tetrimino.xml</value>
-			<value>/WEB-INF/tiles/partie.xml</value>
+			<value>/WEB-INF/tiles/test.xml</value>
 		</list>
 	</property>
 </bean>

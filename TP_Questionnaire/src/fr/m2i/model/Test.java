@@ -58,6 +58,23 @@ public class Test implements Serializable {
 	public void setNomTest(String nomTest) {
 		this.nomTest = nomTest;
 	}
+
+	public Test() {
+		super();
+	}
+
+	public Test(String nomTest) {
+		super();
+		this.nomTest = nomTest;
+	}
+
+	public List<Questionnaire> getQuestionnaires() {
+		return questionnaires;
+	}
+
+	public void setQuestionnaires(List<Questionnaire> questionnaires) {
+		this.questionnaires = questionnaires;
+	}
 	
 	
 
