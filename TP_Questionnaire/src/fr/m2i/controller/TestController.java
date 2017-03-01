@@ -143,7 +143,7 @@ public class TestController {
 		}
 			
 		model.addAttribute("test", this.testDAO.find(testId));
-		return "editQuestionnaire";
+		return "editTest";
 		
 	}
 	
