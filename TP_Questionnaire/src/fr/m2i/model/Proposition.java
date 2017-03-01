@@ -36,6 +36,8 @@ public class Proposition {
 	private boolean propositionCorrect;
 	
 	
+	
+	
 
 
 	public int getIdProposition() {

@@ -27,6 +27,7 @@ public class Question {
 	private String texteQuestion;
 	
 	
+	
 	@ManyToOne
 	@JoinColumn(name="idQuestionnaire")
 	private Questionnaire idQuestionnaire;
