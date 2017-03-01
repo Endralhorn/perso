@@ -5,7 +5,7 @@
 <nav>
 	<div class="nav-wrapper">
 		<div class="container">
-			<a href="#" class="brand-logo">Tetris - ${ titleCode }</a>
+			<a href="#" class="brand-logo">TQ - ${ titleCode }</a>
 			
 			<c:if test="${ utilisateur != null }">
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
