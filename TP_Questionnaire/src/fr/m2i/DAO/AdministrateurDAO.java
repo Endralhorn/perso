@@ -22,7 +22,7 @@ public class AdministrateurDAO implements IAdministrateurDAO{
 	@Override
 	public List<Administrateur> findAll() {
 		try {
-			return this.entityManager.createQuery("from Utilisateur", Administrateur.class).getResultList();
+			return this.entityManager.createQuery("from Personne", Administrateur.class).getResultList();
 		}
 
 		catch (Exception e) {
@@ -74,7 +74,7 @@ public class AdministrateurDAO implements IAdministrateurDAO{
 	public Administrateur auth(String loginAdmin, String passAdmin) throws WrongUsernameOrPasswordException {
 		Administrateur myAdmin = null;
 		try {
-			myAdmin =  entityManager.createQuery("FROM Personne WHERE loginAdmin = :user AND passAdmin = :pass " /*"SELECT u FROM Utilisateur u WHERE u.username = :user AND u.password = :pass"*/, Administrateur.class)
+			myAdmin =  entityManager.createQuery("FROM Administrateur WHERE loginAdmin = :user AND passAdmin = :pass " /*"SELECT u FROM Utilisateur u WHERE u.username = :user AND u.password = :pass"*/, Administrateur.class)
 					.setParameter("user", loginAdmin)
 					.setParameter("pass", passAdmin)
 					.getSingleResult();
