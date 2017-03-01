@@ -46,6 +46,43 @@ public class TestController {
 	}
 	
 	
+	@RequestMapping(value = "/editTest", method=RequestMethod.GET)
+	public String editTetriminoGet(@RequestParam(value="test_id", required=false) int test_id,
+								Model model, 
+								HttpSession session) {
+		Test myTest = 
+//		String myTitre;
+
+		if (myTest == null)
+		{this.testDAO.find(test_id);
+//			String myTetriminoId = req.getParameter("tetrimino_id");
+			myTest = new Test(); 
+			
+			if (myTest == null)
+			{
+				
+				return "redirect:/home";
+			}
+			
+			model.addAttribute("title", "Edition Tetrimino");
+//			myTitre = "Edition Tetrimino";
+		}
+		
+		else
+		{
+			myTetrimino = new Test("Pas de nom", "000");
+			model.addAttribute("title", "Nouveau tetrimino");
+//			myTitre = "Nouveau tetrimino";
+		}
+		
+		session.setAttribute("tetrimino", myTetrimino);
+		List<Bloc> blocs = myTetrimino.getBlocs();
+		session.setAttribute("blocs", blocs);
+		return "editTetrimino";
+		
+	}
+	
+	
 	@RequestMapping(value = "/editTetrimino", method=RequestMethod.GET)
 	public String editTetriminoGet(@RequestParam(value="tetrimino_id", required=false) String tetri_id,
 								Model model, 
