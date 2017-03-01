@@ -22,7 +22,7 @@ public class AdministrateurDAO implements IAdministrateurDAO{
 	@Override
 	public List<Administrateur> findAll() {
 		try {
-			return this.entityManager.createQuery("from Personne", Administrateur.class).getResultList();
+			return this.entityManager.createQuery("from Administrateur", Administrateur.class).getResultList();
 		}
 
 		catch (Exception e) {
