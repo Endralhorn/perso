@@ -35,7 +35,7 @@
 			
 			<div class="row">
 				<ul class="collapsible" data-collapsible="accordion">
-					<c:forEach items="${ test.questionnaires }" var="bloc">
+					<c:forEach items="${ test.questionnaires }" var="questionnaire">
 						<li>
 							<div class="collapsible-header">
 								<a href="${ pageContext.request.contextPath }/editQuestionnaire?test_id=${ test.id }&questionnaire_id=${ questionnaire.idQuestionnaire }"><i class="material-icons">mode_edit</i></a>

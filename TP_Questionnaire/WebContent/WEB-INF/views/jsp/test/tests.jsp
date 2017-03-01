@@ -35,7 +35,7 @@
 				
 				<c:if test="${ montrerActions }">
 					<div class="card-action">
-						<a href="${ pageContext.request.contextPath }/deleteTest?test_id=${ test.id }">RETIRER</a>
+<%-- 						<a href="${ pageContext.request.contextPath }/deleteTest?test_id=${ test.id }">RETIRER</a> --%>
 						<a href="${ pageContext.request.contextPath }/editTest?test_id=${ test.id }">EDITER</a>
 					</div>
 				</c:if>
@@ -59,6 +59,11 @@
 							<tr>
 								<td>Nom</td>
 								<td>${ test.nomTest }</td>
+							</tr>
+							
+							<tr>
+								<td>Questionnaires</td>
+								<td>${ test.questionnaires.size() }</td>
 							</tr>
 							
 						</tbody>
