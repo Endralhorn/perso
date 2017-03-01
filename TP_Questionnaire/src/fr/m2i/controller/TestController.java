@@ -165,8 +165,10 @@ public class TestController {
 		
 		
 		myQuestionnaire.setNomQuestionnaire(questinnaireNom);
+		myQuestionnaire = this.questionnaireDAO.save(myQuestionnaire);
+		
+
 		myTest.addQuestionnaire(myQuestionnaire);
-		this.questionnaireDAO.save(myQuestionnaire);
 		this.testDAO.save(myTest);
 		
 		List<Questionnaire> questionnaires = myTest.getQuestionnaires();
